@@ -2,18 +2,15 @@ function player(name, mark) {
     return { name, mark }
 }
 
-let player1 = player('John', 'X');
-let player2 = player('Bob', 'O');
+let player1 = player('Player 1', 'X');
+let player2 = player('Player 2', 'O');
 
 let gameBoard = (function () {
     //DEFINE & INITIALISE THE BOARD AREA WITH EMPTY STRING
     let board = {
-        // 1: "", 2: "", 3: "",
-        // 4: "", 5: "", 6: "",
-        // 7: "", 8: "", 9: ""
-        1: "X", 2: "O", 3: "X",
-        4: "X", 5: "X", 6: "",
-        7: "X", 8: "O", 9: "O"
+        1: "", 2: "", 3: "",
+        4: "", 5: "", 6: "",
+        7: "", 8: "", 9: ""
     }
 
     let currentPlayer = player1;
@@ -31,20 +28,12 @@ let gameBoard = (function () {
             currentPlayer = player1;
         }
     }
-
-    //CHECK GAME CONDITION
-
     return { 
         board,
         currentPlayer,
         updateGameBoard
     }
     })();
-
-    //CALL GAME CONDITION FUNCTION
-    // gameCondition();
-
-
 
 function gameCondition(board, mark) {
 //CHECK FOR WINNING CONDITION
@@ -74,26 +63,60 @@ function gameCondition(board, mark) {
         alert(player.name);
     }
     else {
-        // const isAllMarked = (board) => {
-        //     const values = Object.values(board);
-        //     return values.every((currentValue) => currentValue !== "");
-        // }
         const values = Object.values(board);
         const isAllMarked = values.every((currentValue) => currentValue !== "");
         if (isAllMarked) {
             alert('ITS A TIE');
         }
-        //IF IT'S FILLED THEN ANNOUNCES A TIE
     }            
 }
 
-
-// console.log(player1);
-// console.log(player2);
-
-// gameBoard.updateGameBoard(6, player1);
-// gameBoard.updateGameBoard(5, player2);
+//TEST CASE 1: BOARD NOT FILLED - X WON
+// gameBoard.updateGameBoard(1, player1);
+// gameBoard.updateGameBoard(2, player2);
+// gameBoard.updateGameBoard(3, player1);
+// gameBoard.updateGameBoard(4, player2);
+// gameBoard.updateGameBoard(5, player1);
 // gameBoard.updateGameBoard(6, player2);
+// gameBoard.updateGameBoard(9, player1);
+// console.log(gameBoard.board);
+
+//TEST CASE 2: BOARD NOT FILLED - O WON
+gameBoard.updateGameBoard(1, player1);
+gameBoard.updateGameBoard(5, player2);
+gameBoard.updateGameBoard(9, player1);
+gameBoard.updateGameBoard(3, player2);
+gameBoard.updateGameBoard(4, player1);
+gameBoard.updateGameBoard(2, player2);
+gameBoard.updateGameBoard(8, player1);
+gameBoard.updateGameBoard(7, player2);
 console.log(gameBoard.board);
 
+//TEST CASE 3: BOARD FILLED - TIE
+// gameBoard.updateGameBoard(9, player1);
+// gameBoard.updateGameBoard(3, player2);
+// gameBoard.updateGameBoard(5, player1);
+// gameBoard.updateGameBoard(1, player2);
+// gameBoard.updateGameBoard(7, player1);
+// gameBoard.updateGameBoard(8, player2);
+// gameBoard.updateGameBoard(2, player1);
+// gameBoard.updateGameBoard(6, player2);
+// gameBoard.updateGameBoard(4, player1);
+// console.log(gameBoard.board);
+
+
 // gameCondition(gameBoard.board, player1, player2);
+
+//// 1. Start with empty object and use updateGameBoard method to replicate a typical play sequence 
+// TODO 2. Create rudimentary frontend: grid, player/mark and header
+// TODO 3. Add start/reset button
+// TODO 4. Make grid cell clickable and only once
+// TODO 5. Reset board on winning/tie
+// TODO 5. Update game header on winning/tie and player name
+// TODO 6. Styling - apply different shading to filled grid
+// TODO 7. Styling - apply it to player and game header areas
+// TODO 8. Mobile responsive
+
+
+
+
