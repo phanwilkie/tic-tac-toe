@@ -82,15 +82,15 @@ function gameCondition(board, mark) {
 // console.log(gameBoard.board);
 
 //TEST CASE 2: BOARD NOT FILLED - O WON
-gameBoard.updateGameBoard(1, player1);
-gameBoard.updateGameBoard(5, player2);
-gameBoard.updateGameBoard(9, player1);
-gameBoard.updateGameBoard(3, player2);
-gameBoard.updateGameBoard(4, player1);
-gameBoard.updateGameBoard(2, player2);
-gameBoard.updateGameBoard(8, player1);
-gameBoard.updateGameBoard(7, player2);
-console.log(gameBoard.board);
+// gameBoard.updateGameBoard(1, player1);
+// gameBoard.updateGameBoard(5, player2);
+// gameBoard.updateGameBoard(9, player1);
+// gameBoard.updateGameBoard(3, player2);
+// gameBoard.updateGameBoard(4, player1);
+// gameBoard.updateGameBoard(2, player2);
+// gameBoard.updateGameBoard(8, player1);
+// gameBoard.updateGameBoard(7, player2);
+// console.log(gameBoard.board);
 
 //TEST CASE 3: BOARD FILLED - TIE
 // gameBoard.updateGameBoard(9, player1);
