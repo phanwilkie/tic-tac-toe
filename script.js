@@ -2,9 +2,13 @@ const cells = [];
 for (i= 0; i <= 8; i++) {
     cells[i] = document.querySelector('#cell-'+i)
 }
+const body = document.querySelector('body');
 const btnStart = document.querySelector('#btn-start');
 const btnReset = document.querySelector('#btn-reset');
 const statusBar = document.querySelector('.status');
+const player1Label = document.querySelector('.player1');
+const player2Label = document.querySelector('.player2');
+const buttonsLabel = document.querySelector('.buttons');
 
 function player(name, mark) {
     return { name, mark }
@@ -54,72 +58,88 @@ function gameCondition(board, mark) {
         if (mark === 'X') {
             gameBoard.started = false;
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[4] ===  mark && board[5] === mark && board[6] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[7] ===  mark && board[8] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[1] ===  mark && board[4] === mark && board[7] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[2] ===  mark && board[5] === mark && board[8] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[3] ===  mark && board[6] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[1] ===  mark && board[5] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else if (board[3] ===  mark && board[5] === mark && board[7] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
+            resultIndicator(player1);
         }
         else {
             statusBar.textContent = 'Player 2 is the Winner!';
+            resultIndicator(player2);
         }
     }
     else {
@@ -128,8 +148,32 @@ function gameCondition(board, mark) {
         if (isAllMarked) {
             statusBar.textContent = 'TIE!'
             gameBoard.started = false;
+            
         }
     }            
+}
+
+function resultIndicator(player) {
+    player1Label.textContent = '';
+    player2Label.textContent = '';
+    if (player === player1) {
+        body.style.background = '#59D5E0';
+        player1Label.style.background = '#59D5E0';
+        player2Label.style.background = '#59D5E0';
+        buttonsLabel.style.background = '#59D5E0';
+    }
+    if (player === player2) {
+        body.style.background = '#F4538A';
+        player1Label.style.background = '#F4538A';
+        player2Label.style.background = '#F4538A';
+        buttonsLabel.style.background = '#F4538A';
+    }
+    if (player === 'tie') {
+        body.style.background = 'grey';
+        player1Label.style.background = 'grey';
+        player2Label.style.background = 'grey';
+        buttonsLabel.style.background = 'grey';
+    }
 }
 
 btnStart.addEventListener('click', function() {
