@@ -18,11 +18,7 @@ let player2 = player('Player 2', 'O');
 
 let gameBoard = (function () {
     //DEFINE & INITIALISE THE BOARD AREA WITH EMPTY STRING
-    let board = {
-        1: "", 2: "", 3: "",
-        4: "", 5: "", 6: "",
-        7: "", 8: "", 9: ""
-    }
+    let board = {1: "", 2: "", 3: "", 4: "", 5: "", 6: "",7: "", 8: "", 9: ""}
 
     let currentPlayer = player1;
     let started = false; 
@@ -196,18 +192,18 @@ for (let i = 0; i < cells.length; i++) {
                 if (gameBoard.currentPlayer === player1) {
                     cells[i].textContent = 'X';
                     cells[i].style.color = '#59D5E0';
-                    gameBoard.updateGameBoard(i+1, player1);
-                    gameCondition(gameBoard.board, player1.mark);
                     gameBoard.currentPlayer = player2;
                     playerIndicator(player2);
+                    gameBoard.updateGameBoard(i+1, player1);
+                    gameCondition(gameBoard.board, player1.mark);
                 }
                 else {
                     cells[i].textContent = 'O';
                     cells[i].style.color = '#F4538A';
-                    gameBoard.updateGameBoard(i+1, player2);
-                    gameCondition(gameBoard.board, player2.mark);
                     gameBoard.currentPlayer = player1;
                     playerIndicator(player1);
+                    gameBoard.updateGameBoard(i+1, player2);
+                    gameCondition(gameBoard.board, player2.mark);
                 }
             }
         }
