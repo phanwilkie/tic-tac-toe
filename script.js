@@ -1,7 +1,13 @@
+const cells = [];
+for (i= 0; i <= 8; i++) {
+    cells[i] = document.querySelector('#cell-'+i)
+}
+const btnStart = document.querySelector('#btn-start');
+const btnReset = document.querySelector('#btn-reset');
+
 function player(name, mark) {
     return { name, mark }
 }
-
 let player1 = player('Player 1', 'X');
 let player2 = player('Player 2', 'O');
 
@@ -14,6 +20,7 @@ let gameBoard = (function () {
     }
 
     let currentPlayer = player1;
+    let started = false; 
 
     //FUNCTION THAT ALLOWS THE BOARD TO BE UPDATED AND DETERMINES WHOSE TURN NEXT
     const updateGameBoard = (position, player) => {
@@ -31,6 +38,7 @@ let gameBoard = (function () {
     return { 
         board,
         currentPlayer,
+        started,
         updateGameBoard
     }
     })();
@@ -71,6 +79,29 @@ function gameCondition(board, mark) {
     }            
 }
 
+btnStart.addEventListener('click', function() {
+    gameBoard.started = true;
+    cells.forEach(cell => {
+        cell.style.backgroundColor = '#F5DD61';
+    });
+    btnStart.style.display = 'none';
+    btnReset.style.display = 'block';
+})
+
+
+btnReset.addEventListener('click', function() {
+    const result = confirm('Are you sure?');
+    if (result === true) {
+        location.reload();
+    }
+})
+
+// for (let i = 0; i < buttons.length; i++) {
+//     buttons[i].addEventListener('click', function() {
+//         enterNumber(i);
+//     })
+// };
+
 //TEST CASE 1: BOARD NOT FILLED - X WON
 // gameBoard.updateGameBoard(1, player1);
 // gameBoard.updateGameBoard(2, player2);
@@ -108,9 +139,9 @@ function gameCondition(board, mark) {
 // gameCondition(gameBoard.board, player1, player2);
 
 //// 1. Start with empty object and use updateGameBoard method to replicate a typical play sequence 
-// TODO 2. Create rudimentary frontend: grid, player/mark and header
-// TODO 3. Add start/reset button
+//// 2. Create rudimentary frontend: grid, player/mark and header
 // TODO 4. Make grid cell clickable and only once
+// TODO 3. Add start/reset button
 // TODO 5. Reset board on winning/tie
 // TODO 5. Update game header on winning/tie and player name
 // TODO 6. Styling - apply different shading to filled grid

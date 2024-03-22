@@ -45,7 +45,8 @@ button {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #F5DD61;
+    /* background-color: #F5DD61; */
+    background-color: white;
     color: #F4538A;
     font-weight: 900;
     font-size: 157px;
