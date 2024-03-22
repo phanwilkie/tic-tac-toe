@@ -31,16 +31,9 @@ let gameBoard = (function () {
     const updateGameBoard = (position, player) => {
         if (player === player1) {
             board[position] = player1.mark;
-            // gameCondition(board, player1.mark);
-            // currentPlayer = player2;
-            //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 2'S TURN
         }  
         else {
             board[position] = player2.mark;
-            // gameCondition(board, player2.mark);
-            // currentPlayer = player1;
-
-            //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 1'S TURN
         }
     }
     return { 
@@ -52,93 +45,75 @@ let gameBoard = (function () {
     })();
 
 function gameCondition(board, mark) {
-//CHECK FOR WINNING CONDITION
     if (board[1] ===  mark && board[2] === mark && board[3] === mark) {
-        // alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|2|3| ${board[1]}|${board[3]}|${board[3]}`);
         if (mark === 'X') {
             gameBoard.started = false;
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[4] ===  mark && board[5] === mark && board[6] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[7] ===  mark && board[8] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[1] ===  mark && board[4] === mark && board[7] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[2] ===  mark && board[5] === mark && board[8] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[3] ===  mark && board[6] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[1] ===  mark && board[5] === mark && board[9] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
     else if (board[3] ===  mark && board[5] === mark && board[7] === mark) {
         gameBoard.started = false;
         if (mark === 'X') {
-            statusBar.textContent = 'Player 1 is the Winner!';
             resultIndicator(player1);
         }
         else {
-            statusBar.textContent = 'Player 2 is the Winner!';
             resultIndicator(player2);
         }
     }
@@ -146,11 +121,29 @@ function gameCondition(board, mark) {
         const values = Object.values(board);
         const isAllMarked = values.every((currentValue) => currentValue !== "");
         if (isAllMarked) {
-            statusBar.textContent = 'TIE!'
             gameBoard.started = false;
             resultIndicator('tie');
         }
     }            
+}
+
+function playerIndicator(player) {
+    if (player === player1) {
+        body.style.background = '#59D5E0';
+        player1Label.style.color = 'white';
+        player1Label.style.background = '#59D5E0';
+        player2Label.style.color = '#59D5E0';
+        player2Label.style.background = '#59D5E0';
+        buttonsLabel.style.background = '#59D5E0';
+    }
+    else {
+        body.style.background = '#F4538A';
+        player1Label.style.color = '#F4538A';
+        player1Label.style.background = '#F4538A';
+        player2Label.style.color = 'white';
+        player2Label.style.background = '#F4538A';
+        buttonsLabel.style.background = '#F4538A';
+    }
 }
 
 function resultIndicator(player) {
@@ -161,18 +154,21 @@ function resultIndicator(player) {
         player1Label.style.background = '#59D5E0';
         player2Label.style.background = '#59D5E0';
         buttonsLabel.style.background = '#59D5E0';
+        statusBar.textContent = 'Player 1 is the Winner!';
     }
     if (player === player2) {
         body.style.background = '#F4538A';
         player1Label.style.background = '#F4538A';
         player2Label.style.background = '#F4538A';
         buttonsLabel.style.background = '#F4538A';
+        statusBar.textContent = 'Player 2 is the Winner!';
     }
     if (player === 'tie') {
         body.style.background = 'grey';
         player1Label.style.background = 'grey';
         player2Label.style.background = 'grey';
         buttonsLabel.style.background = 'grey';
+        statusBar.textContent = 'TIE!'
     }
 }
 
@@ -183,8 +179,8 @@ btnStart.addEventListener('click', function() {
     });
     btnStart.style.display = 'none';
     btnReset.style.display = 'block';
+    playerIndicator(player1);
 })
-
 
 btnReset.addEventListener('click', function() {
     const result = confirm('Are you sure?');
@@ -203,6 +199,7 @@ for (let i = 0; i < cells.length; i++) {
                     gameBoard.updateGameBoard(i+1, player1);
                     gameCondition(gameBoard.board, player1.mark);
                     gameBoard.currentPlayer = player2;
+                    playerIndicator(player2);
                 }
                 else {
                     cells[i].textContent = 'O';
@@ -210,6 +207,7 @@ for (let i = 0; i < cells.length; i++) {
                     gameBoard.updateGameBoard(i+1, player2);
                     gameCondition(gameBoard.board, player2.mark);
                     gameBoard.currentPlayer = player1;
+                    playerIndicator(player1);
                 }
             }
         }
@@ -249,18 +247,17 @@ for (let i = 0; i < cells.length; i++) {
 // gameBoard.updateGameBoard(4, player1);
 // console.log(gameBoard.board);
 
-
 // gameCondition(gameBoard.board, player1, player2);
 
 //// 1. Start with empty object and use updateGameBoard method to replicate a typical play sequence 
 //// 2. Create rudimentary frontend: grid, player/mark and header
-// TODO 4. Make grid cell clickable and only once
 //// 3. Add start/reset button
-// TODO 5. Reset board on winning/tie
-// TODO 5. Indicate whose turn it is
-// TODO 5. Update game header on winning/tie and player name
-// TODO 6. Styling - apply different shading to filled grid
-// TODO 7. Styling - apply it to player and game header areas
+//// 4. Make grid cell clickable and only once
+//// 5. Reset board on winning/tie
+//// 5. Indicate whose turn it is
+//// 5. Update game header on winning/tie and player name
+//// 6. Styling - apply different shading to filled grid
+//// 7. Styling - apply it to player and game header areas
 //// 8. Mobile responsive
 
 
