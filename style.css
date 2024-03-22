@@ -44,9 +44,9 @@ button {
 .grid {
     display: grid;
     width: 600px;
-    /* grid-template-rows: 80px 200px 200px 200px; */
-    /* grid-template-columns: 200px 200px 200px; */
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust the minmax() values */
+    grid-template-rows: 80px 200px 200px 200px;
+    grid-template-columns: 200px 200px 200px;
+    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
     gap: 5px;
     align-items: center;
 }
@@ -96,8 +96,8 @@ button {
     .grid {
         width: 100%;
         height: 90dvh;
-        /* grid-template-rows: 70px 195px 195px 195px; */
-        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-rows: 70px 195px 195px 195px;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 5px;
         align-items: center;
     }
