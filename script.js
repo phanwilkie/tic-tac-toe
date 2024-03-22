@@ -148,7 +148,7 @@ function gameCondition(board, mark) {
         if (isAllMarked) {
             statusBar.textContent = 'TIE!'
             gameBoard.started = false;
-            resultIndicator(tie);
+            resultIndicator('tie');
         }
     }            
 }
