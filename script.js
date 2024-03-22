@@ -52,6 +52,7 @@ function gameCondition(board, mark) {
     if (board[1] ===  mark && board[2] === mark && board[3] === mark) {
         // alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|2|3| ${board[1]}|${board[3]}|${board[3]}`);
         if (mark === 'X') {
+            gameBoard.started = false;
             statusBar.textContent = 'Player 1 is the Winner!';
         }
         else {
@@ -59,6 +60,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[4] ===  mark && board[5] === mark && board[6] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -67,6 +69,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[7] ===  mark && board[8] === mark && board[9] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -75,6 +78,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[1] ===  mark && board[4] === mark && board[7] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -83,6 +87,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[2] ===  mark && board[5] === mark && board[8] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -91,6 +96,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[3] ===  mark && board[6] === mark && board[9] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -99,6 +105,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[1] ===  mark && board[5] === mark && board[9] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -107,6 +114,7 @@ function gameCondition(board, mark) {
         }
     }
     else if (board[3] ===  mark && board[5] === mark && board[7] === mark) {
+        gameBoard.started = false;
         if (mark === 'X') {
             statusBar.textContent = 'Player 1 is the Winner!';
         }
@@ -119,6 +127,7 @@ function gameCondition(board, mark) {
         const isAllMarked = values.every((currentValue) => currentValue !== "");
         if (isAllMarked) {
             statusBar.textContent = 'TIE!'
+            gameBoard.started = false;
         }
     }            
 }
