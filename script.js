@@ -28,11 +28,14 @@ let gameBoard = (function () {
             board[position] = player1.mark;
             gameCondition(board, player1.mark);
             currentPlayer = player2;
+            //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 2'S TURN
         }  
         else {
             board[position] = player2.mark;
             gameCondition(board, player2.mark);
             currentPlayer = player1;
+
+            //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 1'S TURN
         }
     }
     return { 
@@ -98,16 +101,24 @@ btnReset.addEventListener('click', function() {
 
 for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', function() {
-        console.log(cells[i]);
-    }
-    )
+        if (gameBoard.started === true) {
+            if (cells[i].textContent === '') {
+                if (gameBoard.currentPlayer === player1) {
+                    cells[i].textContent = 'X';
+                    cells[i].style.color = '#59D5E0';
+                    gameBoard.updateGameBoard(i+1, player1);
+                    gameBoard.currentPlayer = player2;
+                }
+                else {
+                    cells[i].textContent = 'O';
+                    cells[i].style.color = '#F4538A';
+                    gameBoard.updateGameBoard(i+1, player2);
+                    gameBoard.currentPlayer = player1;
+                }
+            }
+        }
+    })
 } 
-
-// for (let i = 0; i < buttons.length; i++) {
-//     buttons[i].addEventListener('click', function() {
-//         enterNumber(i);
-//     })
-// };
 
 //TEST CASE 1: BOARD NOT FILLED - X WON
 // gameBoard.updateGameBoard(1, player1);
@@ -150,10 +161,11 @@ for (let i = 0; i < cells.length; i++) {
 // TODO 4. Make grid cell clickable and only once
 //// 3. Add start/reset button
 // TODO 5. Reset board on winning/tie
+// TODO 5. Indicate whose turn it is
 // TODO 5. Update game header on winning/tie and player name
 // TODO 6. Styling - apply different shading to filled grid
 // TODO 7. Styling - apply it to player and game header areas
-// TODO 8. Mobile responsive
+//// 8. Mobile responsive
 
 
 
