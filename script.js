@@ -96,6 +96,13 @@ btnReset.addEventListener('click', function() {
     }
 })
 
+for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('click', function() {
+        console.log(cells[i]);
+    }
+    )
+} 
+
 // for (let i = 0; i < buttons.length; i++) {
 //     buttons[i].addEventListener('click', function() {
 //         enterNumber(i);
@@ -141,7 +148,7 @@ btnReset.addEventListener('click', function() {
 //// 1. Start with empty object and use updateGameBoard method to replicate a typical play sequence 
 //// 2. Create rudimentary frontend: grid, player/mark and header
 // TODO 4. Make grid cell clickable and only once
-// TODO 3. Add start/reset button
+//// 3. Add start/reset button
 // TODO 5. Reset board on winning/tie
 // TODO 5. Update game header on winning/tie and player name
 // TODO 6. Styling - apply different shading to filled grid
