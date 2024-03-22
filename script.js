@@ -4,6 +4,7 @@ for (i= 0; i <= 8; i++) {
 }
 const btnStart = document.querySelector('#btn-start');
 const btnReset = document.querySelector('#btn-reset');
+const statusBar = document.querySelector('.status');
 
 function player(name, mark) {
     return { name, mark }
@@ -26,14 +27,14 @@ let gameBoard = (function () {
     const updateGameBoard = (position, player) => {
         if (player === player1) {
             board[position] = player1.mark;
-            gameCondition(board, player1.mark);
-            currentPlayer = player2;
+            // gameCondition(board, player1.mark);
+            // currentPlayer = player2;
             //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 2'S TURN
         }  
         else {
             board[position] = player2.mark;
-            gameCondition(board, player2.mark);
-            currentPlayer = player1;
+            // gameCondition(board, player2.mark);
+            // currentPlayer = player1;
 
             //TODO INDICATE ON FRONTEND THAT IT'S PLAYER 1'S TURN
         }
@@ -49,35 +50,75 @@ let gameBoard = (function () {
 function gameCondition(board, mark) {
 //CHECK FOR WINNING CONDITION
     if (board[1] ===  mark && board[2] === mark && board[3] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|2|3| ${board[1]}|${board[3]}|${board[3]}`);
+        // alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|2|3| ${board[1]}|${board[3]}|${board[3]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[4] ===  mark && board[5] === mark && board[6] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |4|5|6| ${board[4]}|${board[5]}|${board[6]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[7] ===  mark && board[8] === mark && board[9] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |7|8|9| ${board[7]}|${board[8]}|${board[9]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[1] ===  mark && board[4] === mark && board[7] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|4|7| ${board[1]}|${board[4]}|${board[7]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[2] ===  mark && board[5] === mark && board[8] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |2|5|8| ${board[2]}|${board[5]}|${board[8]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[3] ===  mark && board[6] === mark && board[9] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |7|8|9| ${board[3]}|${board[5]}|${board[8]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[1] ===  mark && board[5] === mark && board[9] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |1|5|9| ${board[1]}|${board[5]}|${board[9]}`);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else if (board[3] ===  mark && board[5] === mark && board[7] === mark) {
-        alert(`WINNER WINNER CHICKEN DINNER - ${mark} = Winner - |3|5|7| ${board[3]}|${board[5]}|${board[7]}`);
-        alert(player.name);
+        if (mark === 'X') {
+            statusBar.textContent = 'Player 1 is the Winner!';
+        }
+        else {
+            statusBar.textContent = 'Player 2 is the Winner!';
+        }
     }
     else {
         const values = Object.values(board);
         const isAllMarked = values.every((currentValue) => currentValue !== "");
         if (isAllMarked) {
-            alert('ITS A TIE');
+            statusBar.textContent = 'TIE!'
         }
     }            
 }
@@ -107,12 +148,14 @@ for (let i = 0; i < cells.length; i++) {
                     cells[i].textContent = 'X';
                     cells[i].style.color = '#59D5E0';
                     gameBoard.updateGameBoard(i+1, player1);
+                    gameCondition(gameBoard.board, player1.mark);
                     gameBoard.currentPlayer = player2;
                 }
                 else {
                     cells[i].textContent = 'O';
                     cells[i].style.color = '#F4538A';
                     gameBoard.updateGameBoard(i+1, player2);
+                    gameCondition(gameBoard.board, player2.mark);
                     gameBoard.currentPlayer = player1;
                 }
             }
